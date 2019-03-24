@@ -85,3 +85,34 @@ pub struct Header {
     #[serde(rename = "gen")]
     genesis_id: String
 }
+
+
+impl Transaction {
+    // TODO: wrap in option/result
+    pub fn make_payment_tx(from: &String, to: &String, fee: &u64, amount: &u64, first_round: &u64, last_round: &u64, note: &Vec<u8>, close_remainder_to: &Option<String>, genesis_id: &String) -> Self {
+        let from_addr = Address::decode(&from).unwrap();
+        let to_addr = Address::decode(&to).unwrap();
+        let close_addr = match close_remainder_to {
+            Some(i) => Address::decode(&i),
+            None => None
+        };
+
+        Transaction {
+            tx_type: TxType::Payment,
+            header: Header {
+                sender: from_addr,
+                fee: *fee,
+                first_valid: *first_round,
+                last_valid: *last_round,
+                note: note.clone(),
+                genesis_id: genesis_id.clone()
+            },
+            payment_fields: Some(PaymentTxnFields {
+                receiver: to_addr,
+                amount: *amount,
+                close_remainder_to: close_addr
+            }),
+            keyreg_fields: None
+        }
+    }
+}
