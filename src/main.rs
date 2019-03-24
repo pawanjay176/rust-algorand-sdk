@@ -1,4 +1,11 @@
 mod types;
+mod signature;
+mod basics;
+mod auction;
+mod transaction;
+
+#[macro_use]
+extern crate serde_derive;
 use crate::types::*;
 
 fn main() {
