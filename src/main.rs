@@ -3,6 +3,7 @@ mod signature;
 mod basics;
 mod auction;
 mod transaction;
+mod account;
 
 #[macro_use]
 extern crate serde_derive;

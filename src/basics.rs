@@ -7,7 +7,7 @@ pub enum TxType {
     // TxType identifies the type of the transaction
     Keyreg
 }
-
+// TODO: Wrap in enums?
 // Algos are the unit of currency in Algorand
 pub type Algos = u64;
 

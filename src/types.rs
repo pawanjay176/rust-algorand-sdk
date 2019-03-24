@@ -19,6 +19,10 @@ impl Address {
         Address([0;HASH_LEN_BYTES])
     }
 
+    pub fn from_bytes(b: [u8; HASH_LEN_BYTES]) -> Self {
+        Address(b)
+    }
+
     pub fn encode(a: &Address) -> String {
         let checksum = digest::digest(&digest::SHA512_256, &a.0);
         let checksum = checksum.as_ref();

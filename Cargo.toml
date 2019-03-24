@@ -6,6 +6,7 @@ edition = "2018"
 
 [dependencies]
 ring = "0.14.6"
+sha2 = "0.8"
 data-encoding = "2.1.2"
 arrayref = "0.3.5"
 serde = "1.0"
