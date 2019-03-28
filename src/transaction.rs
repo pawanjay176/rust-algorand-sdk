@@ -30,9 +30,9 @@ pub struct Transaction {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct SignedTxn {
     // TODO: should be wrapped in an Option?
-    sig: Signature,
-    msig: MultisigSig,
-	txn:  Transaction
+    pub sig: Signature,
+    pub msig: Option<MultisigSig>,
+	pub txn:  Transaction
 }
 
 // KeyregTxnFields captures the fields used for key registration transactions.

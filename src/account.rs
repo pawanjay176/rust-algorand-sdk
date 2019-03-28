@@ -2,13 +2,12 @@ extern crate ed25519_dalek;
 extern crate rand;
 extern crate sha2;
 
-use rand::Rng;
 use rand::rngs::OsRng;
 use sha2::Sha512;
 use ed25519_dalek::{Keypair, PublicKey, SecretKey};
 use crate::types::*;
 
-
+#[derive(Debug)]
 pub struct Account {
     pubkey: PublicKey,
     privkey: SecretKey,
@@ -33,5 +32,18 @@ impl Account {
             privkey: sk,
             address: addr
         }
+    }
+}
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn account_test() {
+        let test_acc: Account = Account::generate_account();
+	    // Address should be identical to public key
+        assert_eq!(test_acc.pubkey.to_bytes(), test_acc.address.to_bytes());
     }
 }

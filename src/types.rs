@@ -23,6 +23,10 @@ impl Address {
         Address(b)
     }
 
+    pub fn to_bytes(&self) -> [u8;32] {
+        self.0
+    }
+
     pub fn encode(a: &Address) -> String {
         let checksum = digest::digest(&digest::SHA512_256, &a.0);
         let checksum = checksum.as_ref();
