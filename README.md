@@ -1,2 +1,2 @@
 # rust-algorand-sdk
-Algorand SDK in Rust
+WIP Algorand SDK in Rust
